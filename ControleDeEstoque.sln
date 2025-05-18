@@ -1,60 +1,20 @@
 using System;
-using System.ComponentModel;
 using System.Globalization;
+using ControleDeEstoque;
 
-namespace ControleDeEstoque
+namespace MyApp
 {
-    class Produto
+    internal class Program
     {
-        private string _nome;
-        public double Preco { get; private set; }
-        public int Quantidade { get; private set; }
+        static void Main(string[] args)
+        {
 
-        public Produto()
-        {
-        }
+            Produto p = new Produto("TV", 500.00, 10);
 
-        public Produto(string nome, double preco, int quantidade)
-        {
-            _nome = nome;
-            Preco = preco;
-            Quantidade = quantidade;
-        }
+            p.Nome = "TV 4K";
 
-        public string Nome
-        {
-            get { return _nome; }
-            set { 
-                if (value != null && value.Length > 1)
-                {
-                    _nome = value;
-                }
-            }
-        }
-               
-        public Produto(string nome, double preco) {
-            _nome = nome;
-            Preco = preco;
-        }
- 
-        public double ValorTotalEmEstoque()
-        {
-            return Preco * Quantidade;
-        }
-
-        public void AdicionarProduto(int quantidade)
-        {
-            Quantidade += quantidade;
-        }
-
-        public void RemoverProduto(int quantidade)
-        {
-            Quantidade -= quantidade;
-        }
-
-        public override string ToString()
-        {
-            return _nome + ", $ " + Preco.ToString("f2") + ", " + Quantidade + " unidade, total: $ " + ValorTotalEmEstoque().ToString("f2");
+            Console.WriteLine(p.Nome);
+            Console.WriteLine(p.Preco);
         }
     }
 }
